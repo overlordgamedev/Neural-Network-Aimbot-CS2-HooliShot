@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Warning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    <!-- Начало блока контента -->
+    {% block content %}
+    <div class="config_box">
+        <div class="info_box">
+            <p style="color: #fff;">
+                Данная нейронная сеть является
+                <span style="color: #fa5252;">бесплатной пробной версией с урезанным функционалом</span>.
+                Полноценная версия находится на стадии разработки.
+            </p>
+            <p style="color: #fff;">
+                Узнать информацию о ходе разработки и будущем функционале можно в нашем Telegram канале –
+                <a href="https://t.me/DungeonAIChannel" target="_blank" style="color: #fac052;">https://t.me/DungeonAIChannel</a>,
+                а также на нашем RUTUBE канале –
+                <a href="https://rutube.ru/channel/44370283/" target="_blank" style="color: #fac052;">https://rutube.ru/channel/44370283/</a>.
+            </p>
+        </div>
+    </div>
+</body>
+<!-- Конец блока контента -->
+    {% endblock %}
+</html>

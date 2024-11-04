@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключение таблицы стилей базового шаблона -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='anim_bg.css') }}">
+    <!-- Подключение js -->
+    <script src="{{ url_for('static', filename='js/load_menu.js') }}"></script>
+    <!-- Библиотека для анимирования -->
+    <script src="{{ url_for('static', filename='js/gsap.min.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- Кнопка для открытия/закрытия боковой панели -->
+            <button class="btn-toggle"><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/FFFFFF/menu--v1.png" alt="menu--v1"/></button>
+            <div class="game_block">
+                <label for="game">Game:</label>
+                <form id="config-form_game">
+                    <select class="game_selector" id="game" name="game">
+                        <option value="cs2">CS2</option>
+                        <option value="default">DEFAULT</option>
+                    </select><br>
+                </form>
+            </div>
+        </header>
+        <div class="color-box"></div>
+        <div class="sidebar">
+            <div class="sidebar_header">
+                <!-- Отображение логотипа -->
+                <img class="logo" src="static/img/logo.png"/>
+            </div>
+            <!-- Пункты меню в боковой панели -->
+            <a href="{{ url_for('default') }}" class="sidebar_item">
+                <h4 class="sidebar_text">Default</h4>
+            </a>
+
+            <a href="{{ url_for('cs2') }}" class="sidebar_item">
+                <h4 class="sidebar_text">CS2</h4>
+            </a>
+        </div>
+        <!-- Объект визуальных объектов полосок -->
+        <canvas id="demo-canvas"></canvas>
+        <!-- Блок контента, который будет заменяться в зависимости от страницы -->
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Скрипт анимации полосок -->
+    <script src="{{ url_for('static', filename='js/anim_bg.js') }}"></script>
+    <script>
+        <!-- Скрипт для управления открытием/закрытием боковой панели -->
+        window.onload = load;
+    </script>
+</body>
+</html>

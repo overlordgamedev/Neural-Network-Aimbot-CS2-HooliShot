@@ -1,0 +1,61 @@
+{
+    "game": "default",
+    "screen_width": 1366,
+    "screen_height": 768,
+    "fov_width": 500,
+    "fov_height": 500,
+    "aim_step": 3,
+    "aim_time_sleep": 0.0025,
+    "aim_target": 0.4,
+    "anti_recoil_px": 1,
+    "anti_recoil_time_sleep": 0.1,
+    "draw_box_valid": true,
+    "box_color": {
+        "r": 0,
+        "g": 30,
+        "b": 255
+    },
+    "draw_fov_valid": false,
+    "fov_color": {
+        "r": 0,
+        "g": 255,
+        "b": 42
+    },
+    "draw_fps_valid": false,
+    "fps_color": {
+        "r": 249,
+        "g": 6,
+        "b": 184
+    },
+    "cs2_screen_width": 1366,
+    "cs2_screen_height": 768,
+    "cs2_fov_width": 500,
+    "cs2_fov_height": 500,
+    "cs2_aim_step": 2,
+    "cs2_aim_time_sleep": 0.001,
+    "cs2_aim_target": 0.4,
+    "cs2_obj_detection": [
+        0,
+        1
+    ],
+    "cs2_macros_gun": "ak_47",
+    "cs2_macros_ak_47_adjustment": 0.28,
+    "cs2_draw_box_valid": true,
+    "cs2_box_color": {
+        "r": 255,
+        "g": 0,
+        "b": 0
+    },
+    "cs2_draw_fov_valid": true,
+    "cs2_fov_color": {
+        "r": 255,
+        "g": 0,
+        "b": 136
+    },
+    "cs2_draw_fps_valid": true,
+    "cs2_fps_color": {
+        "r": 251,
+        "g": 136,
+        "b": 4
+    }
+}

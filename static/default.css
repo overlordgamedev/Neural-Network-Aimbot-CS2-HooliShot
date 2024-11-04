@@ -1,0 +1,74 @@
+.screen_size{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 0px), calc(100% - 0px) 100%, 12px 100%, 0 calc(100% - 12px), 0 0px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+}
+
+.fov_size{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(12px 0, calc(100% - 0px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0px 100%, 0 calc(100% - 12px), 0 12px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+}
+
+.all_aim{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 0px), calc(100% - 0px) 100%, 12px 100%, 0 calc(100% - 12px), 0 0px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+}
+
+.all_anti_recoil{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(12px 0, calc(100% - 0px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0px 100%, 0 calc(100% - 12px), 0 12px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+}
+
+.all_color{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 0px), calc(100% - 0px) 100%, 12px 100%, 0 calc(100% - 12px), 0 0px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+    z-index: 2;
+}
+
+.config_box{
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.box_1{
+    z-index: 2;
+}
+
+.box_3{
+    z-index: 2;
+}
+
+.input_box{
+    background: #262831;
+    border: none;
+    color: #fa5252;
+    padding: 1.5% 5% 1.5% 5%;
+    width: 100%;
+    margin: 1% 0% 1%;
+    clip-path: polygon(10px 0, calc(100% - 0px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0px 100%, 0 calc(100% - 10px), 0 10px);
+}
+
+.color_box{
+    display: flex;
+    flex-direction: column;
+}

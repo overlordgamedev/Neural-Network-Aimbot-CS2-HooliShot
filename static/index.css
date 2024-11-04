@@ -1,0 +1,15 @@
+.info_box{
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 0px), calc(100% - 0px) 100%, 12px 100%, 0 calc(100% - 12px), 0 0px);
+    background: #3a3d43;
+    margin: 1%;
+    padding: 2%;
+    z-index: 2;
+}
+
+.config_box {
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}

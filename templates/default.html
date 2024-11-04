@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Default</title>
+    <!-- Подключение таблицы стилей базового шаблона -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='default.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    <!-- Начало блока контента -->
+    {% block content %}
+
+    <form class="config_box" id="config-form">
+        <div class="box_1">
+            <div class="screen_size">
+                <label for="screen_width">Screen Width:</label>
+                <input class="input_box" type="number" id="screen_width" name="screen_width">
+                <label for="screen_height">Screen Height:</label>
+                <input class="input_box" type="number" id="screen_height" name="screen_height">
+            </div>
+
+            <div class="fov_size">
+                <label for="fov_width">FOV Width:</label>
+                <input class="input_box" type="number" id="fov_width" name="fov_width">
+                <label for="fov_height">FOV Height:</label>
+                <input class="input_box" type="number" id="fov_height" name="fov_height">
+            </div>
+        </div>
+
+        <div class="all_color">
+            <div class="color_box">
+                <label for="box_color">Box Color:</label>
+                    <select class="input_box" id="draw_box_valid" name="draw_box_valid">
+                        <option value="true">TRUE</option>
+                        <option value="false">FALSE</option>
+                    </select>
+                <input class="input_box" type="color" id="box_color" name="box_color">
+            </div>
+
+            <div class="color_box">
+                <label for="fov_color">FOV Color:</label>
+                <select class="input_box" id="draw_fov_valid" name="draw_fov_valid">
+                    <option value="true">TRUE</option>
+                    <option value="false">FALSE</option>
+                </select>
+                <input class="input_box" type="color" id="fov_color" name="fov_color">
+            </div>
+
+            <div class="color_box">
+                <label for="fps_color">FPS Color:</label>
+                <select class="input_box" id="draw_fps_valid" name="draw_fps_valid">
+                    <option value="true">TRUE</option>
+                    <option value="false">FALSE</option>
+                </select>
+                <input class="input_box" type="color" id="fps_color" name="fps_color">
+            </div>
+        </div>
+
+        <div class="box_3">
+            <div class="all_aim">
+                <label for="aim_step">Aim Step:</label>
+                <input class="input_box" type="number" id="aim_step" name="aim_step">
+                <label for="aim_time_sleep">Aim Time Sleep:</label>
+                <input class="input_box" type="number" step="0.001" id="aim_time_sleep" name="aim_time_sleep">
+                <label for="aim_target">Aim Target:</label>
+                <input class="input_box" type="number" step="0.01" id="aim_target" name="aim_target">
+            </div>
+
+             <div class="all_anti_recoil">
+                <label for="anti_recoil_px">Anti Recoil PX:</label>
+                <input class="input_box" type="number" id="anti_recoil_px" name="anti_recoil_px">
+                <label for="anti_recoil_time_sleep">Anti Recoil Time Sleep:</label>
+                <input class="input_box" type="number" step="0.001" id="anti_recoil_time_sleep" name="anti_recoil_time_sleep">
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    // Функция работает асинхронно, то есть не занимает поток для других задач
+    async function loadConfig() {
+        // Отправляет запрос на /get_config в Python коде
+        const response = await fetch('/get_config');
+        // Принимает ответ от Python части
+        const config = await response.json();
+
+        // Назначает каждому объекту страницы с конкретным id значение из полученного от Python ответа в котором
+        // находится ключ с таким же названием как и id объекта на странице
+        document.getElementById('game').value = config.game || '';
+
+        document.getElementById('screen_width').value = config.screen_width || '';
+        document.getElementById('screen_height').value = config.screen_height || '';
+
+        document.getElementById('fov_width').value = config.fov_width || '';
+        document.getElementById('fov_height').value = config.fov_height || '';
+
+        document.getElementById('aim_step').value = config.aim_step || '';
+        document.getElementById('aim_time_sleep').value = config.aim_time_sleep || '';
+        document.getElementById('aim_target').value = config.aim_target || '';
+
+        document.getElementById('anti_recoil_px').value = config.anti_recoil_px || '';
+        document.getElementById('anti_recoil_time_sleep').value = config.anti_recoil_time_sleep || '';
+
+        document.getElementById('draw_box_valid').value = config.draw_box_valid ? 'true' : 'false';
+         // Загружаем значение цвета в HEX формате
+        const boxColor = rgbToHex(config.box_color.r, config.box_color.g, config.box_color.b);
+        document.getElementById('box_color').value = boxColor;
+
+        document.getElementById('draw_fov_valid').value = config.draw_fov_valid ? 'true' : 'false';
+         // Загружаем значение цвета в HEX формате
+        const fovColor = rgbToHex(config.fov_color.r, config.fov_color.g, config.fov_color.b);
+        document.getElementById('fov_color').value = fovColor;
+
+        document.getElementById('draw_fps_valid').value = config.draw_fps_valid ? 'true' : 'false';
+         // Загружаем значение цвета в HEX формате
+        const fpsColor = rgbToHex(config.fps_color.r, config.fps_color.g, config.fps_color.b);
+        document.getElementById('fps_color').value = fpsColor;
+    }
+
+    async function updateConfig() {
+        // Создается javascript объект с названием data
+        const data = {
+            // В конкретные ключи назначаются значения из объектов на странице с конкретным id
+            game: document.getElementById('game').value,
+
+            screen_width: document.getElementById('screen_width').value,
+            screen_height: document.getElementById('screen_height').value,
+
+            fov_width: document.getElementById('fov_width').value,
+            fov_height: document.getElementById('fov_height').value,
+
+            aim_step: document.getElementById('aim_step').value,
+            aim_time_sleep: document.getElementById('aim_time_sleep').value,
+            aim_target: document.getElementById('aim_target').value,
+
+            anti_recoil_px: document.getElementById('anti_recoil_px').value,
+            anti_recoil_time_sleep: document.getElementById('anti_recoil_time_sleep').value,
+
+            draw_box_valid: document.getElementById('draw_box_valid').value === 'true',
+            // Преобразуем цвет обратно в RGB формат
+            box_color: hexToRgb(document.getElementById('box_color').value),
+
+            draw_fov_valid: document.getElementById('draw_fov_valid').value === 'true',
+            // Преобразуем цвет обратно в RGB формат
+            fov_color: hexToRgb(document.getElementById('fov_color').value),
+
+            draw_fps_valid: document.getElementById('draw_fps_valid').value === 'true',
+            // Преобразуем цвет обратно в RGB формат
+            fps_color: hexToRgb(document.getElementById('fps_color').value),
+        };
+
+        await fetch('/update_config', {
+            // Указываем, что это запрос типа POST, то есть мы отправляем данные
+            method: 'POST',
+            headers: {
+                // Указываем, что данные отправляются в формате JSON
+                'Content-Type': 'application/json'
+            },
+            // Тело запроса (данные, которые мы отправляем)
+            // JSON.stringify преобразует JavaScript объект 'data' в строку формата JSON
+            body: JSON.stringify(data)
+        });
+    }
+
+    // DOMContentLoaded означает что код будет запускаться при открытии страницы
+    document.addEventListener("DOMContentLoaded", function() {
+        // Вызывается функция loadConfig() из js
+        loadConfig();
+
+        // Берет id объекта config-form и записывает его в переменную form
+        const form = document.getElementById("config-form");
+        const formGame = document.getElementById("config-form_game");
+        // Вызывает ивент который будет срабатывать при взаимодействии с объектом input находящимся в объекте id
+        // которого хранится в переменной form, если произошло взаимодействие, будет вызываться функция updateConfig из js
+        form.addEventListener('input', updateConfig);
+        // Вызывает ивент для config_form_game
+        formGame.addEventListener('input', updateConfig);
+    });
+
+    // Функция для преобразования RGB в HEX
+    function rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+    }
+
+    // Функция для преобразования HEX в RGB
+    function hexToRgb(hex) {
+        const bigint = parseInt(hex.slice(1), 16);
+        return {
+            r: (bigint >> 16) & 255,
+            g: (bigint >> 8) & 255,
+            b: bigint & 255
+        };
+    }
+</script>
+<!-- Конец блока контента -->
+    {% endblock %}
+</html>

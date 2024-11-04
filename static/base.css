@@ -1,0 +1,188 @@
+/* Подключение кастомного шрифта */
+@font-face {
+    font-family: 'HelveticaNeue'; /* Название кастомного шрифта */
+    src: url('fonts/HelveticaNeue-Medium.otf') format('truetype'); /* Путь к файлу шрифта */
+}
+
+/* Основные стили для страницы */
+body {
+    background: #262831; /* Цвет фона */
+    font-family: 'HelveticaNeue', sans-serif; /* Шрифт */
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none; /* Убрать подчеркивание */
+    color: white; /* Цвет текста */
+}
+
+/* Стили для меток */
+label {
+    color: #a5a5a5; /* Цвет текста */
+    margin-right: 5px;
+}
+
+/* Обнуление отступов и внутренних отступов, а также установка border-box */
+* {
+    margin: 0; /* Обнуление отступов */
+    padding: 0; /* Обнуление внутренних отступов */
+    box-sizing: border-box; /* Установка box-sizing */
+    text-decoration: none; /* Убрать подчеркивание */
+}
+
+/* Стили для контейнера */
+.container {
+    width: auto; /* Автоматическая ширина */
+    min-height: 100vh; /* Минимальная высота 100% высоты видимой области */
+    transition: margin-left 0.3s linear; /* Плавное изменение отступа слева */
+}
+
+/* Стили для боковой панели */
+.sidebar {
+    width: 0; /* Ширина 0, изначально скрыта */
+    height: 100%; /* Высота 100% */
+    position: fixed; /* Фиксированная позиция */
+    top: 0; /* Положение сверху */
+    left: 0; /* Положение слева */
+    overflow: hidden; /* Скрытие контента, выходящего за границы */
+    z-index: 1; /* Положение слоя */
+    background-color: #181c23; /* Цвет фона */
+    transition: width 0.3s linear; /* Плавное изменение ширины */
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 41%); /* Тень */
+}
+
+/* Стили для объекта бокового меню с логотипом */
+.sidebar_header {
+    width: 100%; /* Ширина 100% */
+    height: 50px; /* Высота 50 пикселей */
+    display: flex; /* Отображение как flex-контейнер */
+    justify-content: center; /* Выравнивание содержимого по центру по горизонтали */
+    align-items: center; /* Выравнивание содержимого по центру по вертикали */
+    text-align: center; /* Выравнивание текста по центру */
+    margin-bottom: 25px; /* Отступ снизу */
+}
+
+/* Стили для объектов внутри кнопки */
+.sidebar_item {
+    width: 100%; /* Ширина 100% */
+    display: flex; /* Отображение как flex-контейнер */
+    position: relative; /* Позиционирование */
+    align-items: center; /* Выравнивание элементов по центру по вертикали */
+}
+
+/* Стили для текста кнопок в боковой панели */
+.sidebar_text{
+    margin: 5%;
+    font-size: 20px;
+    color: #fa5252;
+}
+
+/* Анимированная полоска снизу кнопок боковой панели при наведении */
+.sidebar_item::before {
+    content: ""; /* Пустой контент */
+    width: 100%; /* Ширина */
+    height: 4px; /* Высота */
+    position: absolute; /* Абсолютное позиционирование */
+    bottom: 0; /* Положение снизу */
+    left: 0; /* Положение слева */
+    background-color: #fa5252; /* Цвет фона */
+    transform: scale(0); /* Масштабирование */
+    transform-origin: left; /* Точка трансформации */
+    transition: all 0.3s linear; /* Плавность анимации */
+}
+
+/* Анимированная полоска снизу кнопок боковой панели при нажатии */
+.sidebar_item:hover::before {
+    transform: scale(1); /* Масштабирование */
+}
+
+/* Кнопки в боковой панели */
+.sidebar_item:hover {
+    background-color: #262831; /* Цвет фона при наведении */
+    transition: all 0.3s linear; /* Плавность анимации */
+}
+
+/* Стили для активной ширины боковой панели */
+.active {
+    width: 170px; /* Ширина 170 пикселей */
+    z-index: 2;
+}
+
+/* Стили для добавления отступа слева всем объектам что бы они не прятались за боковое меню при его открытии */
+.active_margin_left {
+    margin-left: 170px; /* Отступ слева 170 пикселей */
+}
+
+/* Стили для верхней панели */
+.header {
+    width: 100%; /* Ширина 100% */
+    height: 50px; /* Высота 50 пикселей */
+    display: flex; /* Отображение как flex-контейнер */
+    justify-content: space-between;
+    align-items: center; /* Выравнивание содержимого по центру по вертикали */
+    background-color: #181c23 ; /* Цвет фона */
+    position: relative;
+    z-index: 2;
+}
+
+/* Стили для кнопки открытия боковой панели */
+.btn-toggle {
+    width: 40px; /* Ширина 40 пикселей */
+    height: 60%; /* Высота 60% */
+    border: none; /* Без границ */
+    display: flex; /* Отображение как flex-контейнер */
+    justify-content: center; /* Выравнивание содержимого по центру по горизонтали */
+    align-items: center; /* Выравнивание содержимого по центру по вертикали */
+    background-color: #FA5252; /* Цвет фона */
+    color: White; /* Цвет текста */
+    cursor: pointer; /* Изменение курсора при наведении */
+    transition: all 0.3s linear; /* Плавность анимации */
+    margin-left: 1%; /* Левый отступ */
+    z-index: 2;
+        clip-path: polygon(10px 0, calc(100% - 0px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0px 100%, 0 calc(100% - 10px), 0 10px);
+}
+
+/* Стили при наведении на кнопку переключения */
+.btn-toggle:hover {
+    background: #c33f3f; /* Цвет фона при наведении */
+}
+
+/* Стили для логотипа */
+.logo {
+    width: 150px; /* Ширина 130 пикселей */
+}
+
+.game_block{
+    display: flex;
+    margin-right: 1%;
+    align-items: center;
+}
+
+.game_selector{
+    clip-path: polygon(0px 0, calc(100% - 7px) 0, 100% 7px, 100% calc(100% - 0px), calc(100% - 0px) 100%, 7px 100%, 0 calc(100% - 7px), 0 0px);
+    background: #fa5252;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 5%;
+}
+
+.color-box {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(255, 0, 0, 0) 0%, rgb(250 82 82) 100%);
+    background-size: 200% 100%;
+    animation: colorShift 3s linear infinite;
+}
+
+@keyframes colorShift {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
