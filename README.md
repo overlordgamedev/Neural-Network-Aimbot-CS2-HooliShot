@@ -6,6 +6,8 @@
 - **Telegram канал:** [https://t.me/DungeonAIChannel](https://t.me/DungeonAIChannel)  
 - **RUTUBE канал:** [https://rutube.ru/channel/44370283/](https://rutube.ru/channel/44370283/)  
 ## Инструкция по установке  
-https://docs.google.com/document/d/1MW2ji3Kr37hS8D1fAsv66DRyGBlf7qwnsb8hxqUVjIc/edit?tab=t.0
-![1](https://github.com/user-attachments/assets/84660e53-3fd6-4d48-94a8-addd56a05a5e)
+https://docs.google.com/document/d/1MW2ji3Kr37hS8D1fAsv66DRyGBlf7qwnsb8hxqUVjIc/edit?tab=t.0  
+## Интерфейс  
+![rainbow-line](https://github.com/user-attachments/assets/4bcf460e-030c-41d7-bcf5-57ccf8df7283)
+![Screenshot_1](https://github.com/user-attachments/assets/04eba83f-6825-4071-9852-28d628bf10a5)
 ![baner](https://github.com/user-attachments/assets/d68f77b8-7863-434c-872e-4b48a760d2b6)
